@@ -19,4 +19,11 @@ print("Últim element", areas_pis[13:])
 print("Àrea de la terrassa:", areas_pis[7:8])
 print("Del primer element al tercer:", areas_pis[:3])
 print("Del tercer element al últim:", areas_pis[2:])
-print("Total àrea de les dues habitacions:", areas_pis[5:6] + areas_pis[13:])
+area = areas_pis[5] + areas_pis[13]
+print(f"Total àrea de les dues habitacions: {area}")
+areas_pis[9] = 9
+print(areas_pis)
+areas_pis.extend(['pati interior', 2.78])
+print(areas_pis)
+area_total = areas_pis[1] + areas_pis[3] + areas_pis[5] + areas_pis[7] + areas_pis[9] + areas_pis[11] + areas_pis[13] +areas_pis[15]
+print(f"Area total del pis: {area_total}")
