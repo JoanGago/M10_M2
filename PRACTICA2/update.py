@@ -1,9 +1,18 @@
-from connection import connection, conn
+from connection import conexio_bd, tancar_conexio_bd
 
-sql_update = ''' UPDATE public.transformers SET estatus_actual='Muerto' WHERE transformer_id=1
-'''
+def act():
+    try:
+        cursor = conexio_bd()
+        #Actualitzem un registre de la taula transformers.
+        sql_update = ''' UPDATE public.transformers SET estatus_actual='Muerto' WHERE transformer_id=1
+        '''
 
-connection.execute(sql_update)
-conn.commit()
-result = connection.rowcount
-print("id modificada: ", result, "Actualització efectuada sense errors")
+        cursor.execute(sql_update)
+        cursor.connection.commit()
+        result = cursor.rowcount
+        print("id modificada: .", result, "Actualització efectuada sense errors")
+
+        tancar_conexio_bd(cursor.connection)
+    
+    except Exception as e:
+        print(f"Hi ha hagut un error al actualitzar un registre: {e}")
